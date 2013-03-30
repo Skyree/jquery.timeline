@@ -1,2 +1,4 @@
 jquery.timeline
 ===============
+
+Documentation soon
