@@ -69,11 +69,12 @@ By default it is set to `false` so you don't have animation.
 ## Methods
 
 ### reload
-Reload the timeline to reposition elements
+Reload the timeline to reposition elements.
 `$('#selector').timeline('reload')`
 
 ### prepend
-Prepend an element and allows a callback
+Prepend an element and allows a callback.
+
 Options :
 * element : An element that suits the item property.
 * callback : An optional callback function.
@@ -83,14 +84,16 @@ If you don't need a callback you don't need to use a map.
 * `$('#selector').prepend({element: '<div class="block" />', callback: function(newElm) { // do stuff }})`
 
 ### append
-Append an element and allows a callback
+Append an element and allows a callback.
+
 See prepend.
 
 ### removeItem
-Remove an element and allows a callback
+Remove an element and allows a callback.
+
 Option :
 * element : A timeline element or a child of this element.
-* callback : An optional callback function
+* callback : An optional callback function.
 
 If you don't need a callback youdon't need to use a map.
 * `$('#selector').removeItem(myElm)`
@@ -102,6 +105,7 @@ Remove the timeline but you can reload it after.
 
 ### destroy
 Destroy the timeline and all properties set.
+
 You can use an optional callback.
 * `$('#selector').timeline('destroy')`
 * `$('#selector').timeline('destroy', function() { // do stuff })`
