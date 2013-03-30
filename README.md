@@ -98,7 +98,7 @@ If you don't need a callback youdon't need to use a map.
 
 ### remove
 Remove the timeline but you can reload it after.
-`$('#selector').timeline('remove');
+`$('#selector').timeline('remove')`
 
 ### destroy
 Destroy the timeline and all properties set.
