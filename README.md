@@ -45,7 +45,7 @@ By using it as a function, you can retrieve your timeline container :
 		}
 	});
 
-This example return one column in your container is narrower than 768 pixels, 2 columns on the contrary.
+This example return one column if your container is narrower than 768 pixels, 2 columns on the contrary.
 
 ### first
 `first` must be set to `left` or `right`. This property works with the `corner` property. Setting it to right makes the corner item first in the DOM, setting it to the left makes it second.
