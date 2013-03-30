@@ -1,0 +1,460 @@
+<!doctype>
+<html>
+<head>
+	<style type="text/css">
+		/* Page basic styles */
+		
+		html {
+			font: 0.9em/1.2 Helvetica, Arial, 'Sans serif';
+		}
+		html * {
+			box-sizing: border-box;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		
+		body.no-select * {
+			-webkit-user-select: none;
+			   -moz-user-select: none; 
+				-ms-user-select: none; 
+				 -o-user-select: none;
+					user-select: none;  
+		}
+		
+		/*.menu {
+			position: fixed;
+			top: 5px;
+			left: 5px;
+			padding: 5px;
+			background: rgba(255,255,255,0.9);
+			border: 1px solid #000;
+			cursor:move;
+			z-index: 3;
+		}*/
+		header {
+			width: 100%;
+			overflow: hidden;
+			border-bottom: 1px solid #000;
+			position: fixed;
+			top: 0;
+			z-index: 999;
+		}
+		header section {
+			width: 100%;
+			height: 320px;
+			overflow: auto;
+		}
+		header section .scrollable {
+			min-width: 960px;
+		}
+		header nav {
+			height: 30px;
+			position: relative;
+			border-top: 1px solid #000;
+			background: rgb(63,63,63); /* Old browsers */
+			background: -moz-linear-gradient(top,  rgba(63,63,63,1) 0%, rgba(88,88,88,1) 50%, rgba(80,80,80,1) 51%, rgba(122,122,122,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(63,63,63,1)), color-stop(50%,rgba(88,88,88,1)), color-stop(51%,rgba(80,80,80,1)), color-stop(100%,rgba(122,122,122,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  rgba(63,63,63,1) 0%,rgba(88,88,88,1) 50%,rgba(80,80,80,1) 51%,rgba(122,122,122,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  rgba(63,63,63,1) 0%,rgba(88,88,88,1) 50%,rgba(80,80,80,1) 51%,rgba(122,122,122,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  rgba(63,63,63,1) 0%,rgba(88,88,88,1) 50%,rgba(80,80,80,1) 51%,rgba(122,122,122,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  rgba(63,63,63,1) 0%,rgba(88,88,88,1) 50%,rgba(80,80,80,1) 51%,rgba(122,122,122,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f3f3f', endColorstr='#7a7a7a',GradientType=0 ); /* IE6-9 */
+		}
+		header nav .wrapper {
+			max-width: 1020px;
+			margin: 0 auto;
+			height: 100%;
+		}
+		header nav .wrapper .shortcut {
+			vertical-align: bottom;
+			margin: 0 15px;
+		}
+		.toggle-slide {
+			position: absolute;
+			top: 7px;
+			right: 10px;
+			cursor: pointer;
+		}
+		.shortcut {
+			cursor: pointer;
+		}
+		.menu {
+			float: left;
+			background: #fff;
+			overflow: hidden;
+		}
+		.menu .left {
+			float: left;
+			width: 200px;
+			height: 100%;
+			padding: 10px;
+			border-right: 2px solid #999;
+		}
+		.menu input[type="text"] {
+			box-sizing: content-box;
+		}
+		.render {
+			overflow: hidden;
+			background: #000;
+		}
+		.render pre {
+			margin: 0;
+			padding: 10px;
+			background: #000;
+			height: 100%;
+		}
+		.render pre code {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		.content {
+			clear: left;
+			margin-top: 361px;
+		}
+		
+		h1.title {
+			text-align: center;
+		}
+		
+		#timeline {
+			max-width: 1020px;
+			margin: 20px auto;
+		}
+		
+		.block {
+			width: 50%;
+			position: relative;
+		}
+		
+		.block .inner {
+			background: #eee;
+			border: 1px solid #aaa;
+			padding: 10px;
+			margin-bottom: 20px;
+		}
+		
+		.block img {
+			width: 100%;
+			height: auto;
+		}
+		
+		/* Personnal adds */
+		.timeline-container .timeline-item.timeline-position-left .block .inner {
+			margin-right: 10px;
+		}
+		.timeline-container .timeline-item.timeline-position-right .block .inner {
+			margin-left: 10px;
+		}
+		
+		.timeline-container .timeline-item.timeline-wide-item .block .inner {
+			margin-right: 0;
+			margin-left: 0;
+		}
+		
+		.timeline-container.timeline-wide-format .timeline-item .block .inner {
+			margin: 0 10px 20px;
+		}
+		
+		.timeline-container.timeline-wide-format .timeline-item.timeline-wide-item .block .inner {
+			margin: 0 10px 20px;
+		}
+		
+		.timeline-container .timeline-central-line {
+			margin-top: -20px;
+			border-radius: 2px;
+		}
+		
+		.timeline-container .timeline-item .timeline-item-arrow {
+			width: 6;
+			height: 10px;
+			position: absolute;
+			top: 50%;
+			margin-top: 5px;
+			background: #fff;
+		}
+		.timeline-container .timeline-item.timeline-position-left .timeline-item-arrow {
+			background-image: url('img/corner-left.png');
+			right: 6px;
+		}
+		.timeline-container .timeline-item.timeline-position-right .timeline-item-arrow {
+			background-image: url('img/corner-right.png');
+			left: 6px;
+		}
+		
+		.timeline-container .timeline-item .timeline-item-close {
+			position: absolute;
+			top: 3px;
+			cursor: pointer;
+		}
+		.timeline-container .timeline-item.timeline-position-left .timeline-item-close {
+			right: 14px;
+		}
+		.timeline-container .timeline-item.timeline-position-right .timeline-item-close, .timeline-container .timeline-item.timeline-position-left.timeline-wide-item .timeline-item-close {
+			right: 4px;
+		}
+
+	</style>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="highlight.js/styles/sunburst.css" type="text/css" />
+	<link rel="stylesheet" href="../timeline.css" type="text/css" />
+</head>
+<body>
+	<header>
+		<section>
+			<div class="scrollable">
+				<div class="menu">
+					<div class="left">
+						<legend>Basics</legend>
+						<label class="checkbox" for="corner"><input type="checkbox" id="corner" name="corner"> Enable corner items</label>
+						<label class="checkbox" for="wide"><input type="checkbox" id="wide" name="wide"> Enable wide items</label>
+						<label class="checkbox" for="line"><input type="checkbox" id="line" name="line"> Enable central line</label>
+						<label class="checkbox" for="arrow"><input type="checkbox" id="arrow" name="arrows"> Enable item arrows</label>
+						<label class="checkbox" for="deletebtn"><input type="checkbox" id="deletebtn" name="deletebtn"> Enable delete button</label>
+						<legend>Begin from</legend>
+						<div id="first">
+							<label class="radio inline" for="first1"><input type="radio" id="first1" name="first" value="left" checked>Left</label>
+							<label class="radio inline" for="first2"><input type="radio" id="first2" name="first" value="right">Right</label>
+						</div>
+					</div>
+					<div class="left">
+						<legend>Animation</legend>
+						<select class="input-medium" name="animation">
+							<option value="0" selected>None</option>
+							<option value="fade">FadeIn/Out</option>
+							<option value="slide">SlideDown/Up</option>
+						</select>
+						<legend>Animation duration</legend>
+						<input class="input-medium" type="text" name="duration" value="2000" />
+					</div>
+					<div class="left">
+						<button class="btn btn-block" data-action="init" id="init">Run timeline</button>
+						<button class="btn btn-block" data-action="prepend" id="prepend">Prepend Element</button>
+						<button class="btn btn-block" data-action="append" id="append">Append Element</button>
+						<button class="btn btn-block" data-action="destroy" id="destroy">Destroy timeline</button>
+					</div>
+				</div>
+				<div class="render">
+					<pre><code class="javascript"></code></pre>
+				</div>
+			</div>
+		</section>
+		<nav>
+			<div class="wrapper">
+				<span data-action="init" title="Run timeline" class="icon-play shortcut"></span>
+				<span data-action="prepend" title="Prepend element" class="icon-plus shortcut"></span>
+				<span data-action="append" title="Append element" class="icon-plus shortcut"></span>
+				<span data-action="destroy" title="Destroy timeline" class="icon-remove shortcut"></span>
+			</div>
+			<span class="icon-chevron-up toggle-slide"></span>
+		</nav>
+	</header>
+	<div class="content">
+		
+		<h1 class="title">jQuery.timeline</h1>
+		<div id="timeline">
+			<div class="block"><div class="inner"><h2>1</h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div></div>
+			<div class="block"><div class="inner"><h2>2</h2>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div></div>
+			<div class="block"><div class="inner"><h2>3</h2><img src="img/stockholm.jpg" /></div></div>
+			<div class="block"><div class="inner"><h2>4</h2>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</div></div>
+			<div class="block wide"><div class="inner"><h2>5</h2><h3>I am wide</h3>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</div></div>
+			<div class="block corner"><div class="inner"><h2>6</h2><h3>I am corner</h3>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</div></div>
+			<div class="block"><div class="inner"><h2>7</h2>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</div></div>
+			<div class="block"><div class="inner"><h2>8</h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div></div>
+			<div class="block corner"><div class="inner"><h2>9</h2><h3>I am corner</h3>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?</div></div>
+		</div>
+	</div>
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="highlight.js/highlight.pack.js"></script>
+	<script src="js/beautify.js"></script>
+	<script src="../jquery.timeline.js"></script>
+	<script type="text/javascript">
+		var code = '';
+		$(document).ready(function() {
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		
+		function objToString (obj) {
+			console.log(Object.keys(obj).length);
+			var str = '{';
+			var i = 0;
+			var sep = ',';
+			for (var p in obj) {
+				if (obj.hasOwnProperty(p)) {
+					if(i == (Object.keys(obj).length) - 1) sep = '';
+					if(typeof(obj[p]) === 'function') {
+						str += p + ':'+obj[p] + sep;
+					}
+					else if(typeof(obj[p]) === 'string') {
+						str += p + ':"' + obj[p] + '"' + sep;
+					}
+					else {
+						str += p + ':' + obj[p] + sep
+					}
+					i++;
+				}
+			}
+			str += '}';
+			return str;
+		}
+		
+		var i = 9;
+		var option = {
+			'corner' : false,
+			'wide' : false,
+			'line': false,
+			'arrows': false,
+			'deletebtn': false,
+			'column': function(container) {
+				if($(container).width() > 768) return 2;
+				else return 1;
+			},
+			'first' : 'left',
+			'animation' : false,
+			'duration': 2000
+		}
+		
+		$('input[name="corner"]').change(function() {
+			option.corner = $('input[name="corner"]').is(':checked')?'.corner':false;
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		$('input[name="wide"]').change(function() {
+			option.wide = $('input[name="wide"]').is(':checked')?'.wide':false;
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		$('input[name="line"]').change(function() {
+			option.line = $('input[name="line"]').is(':checked');
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		$('input[name="arrows"]').change(function() {
+			option.arrows = $('input[name="arrows"]').is(':checked');
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		$('input[name="deletebtn"]').change(function() {
+			option.deletebtn = $('input[name="deletebtn"]').is(':checked')?'icon-remove':false;
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		$('input[name="first"]').change(function() {
+			option.first = $('input[name="first"]:checked').val();
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		$('select[name="animation"]').change(function() {
+			option.animation = ($('select[name="animation"] option:selected').val() != '0')?$('select[name="animation"] option:selected').val():false;
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		$('input[name="duration"]').change(function() {
+			option.duration = parseInt($('input[name="duration"]').val());
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+		});
+		$('[data-action="init"]').click(function() {
+			code = '$(\'#timeline\').timeline('+objToString(option)+');';
+			preview();
+			var optMore = option;
+			optMore.onRemoveItem = function() {
+				code = "$('#timeline').timeline('removeItem', $(selector));";
+				preview();
+			}
+			$('#timeline').timeline(optMore);
+		});
+		
+		$('[data-action="prepend"]').click(function() {
+			var nbr = Math.round(Math.random()*5);
+			
+			$.ajax({
+				url:'http://sheenlipsum.com/gettext/'+nbr,
+				type: 'GET',
+				dataType: 'JSON'
+			}).done(function(lorem) {
+				if(lorem.length) {
+					for(l in lorem) lorem[l] = '<p>'+lorem[l]+'</p>';
+					lorem = lorem.join('');
+				}
+				$('#timeline').timeline('prepend', {element:'<div class="block"><div class="inner"><h2>'+(parseInt(i)+1)+'</h2>'+lorem+'</div></div>', callback: function(elm) {
+						$('<p class="callback" style="color:red;">Hello I am a callback function for prepend !</p>').appendTo($(elm).children('.inner')).hide().fadeIn(3000, function() {
+							$(this).remove();
+						});
+					}
+				});
+				i++;
+				
+			}).fail(function() {
+				var lorem = 'Can\'t connect to lorem ipsum api, but we don\'t care, right ?';
+				$('#timeline').timeline('prepend', {element:'<div class="block"><div class="inner"><h2>'+(parseInt(i)+1)+'</h2>'+lorem+'</div></div>', callback: function(elm) {
+						$('<p class="callback" style="color:red;">Hello I am a callback function for prepend !</p>').appendTo($(elm).children('.inner')).hide().fadeIn(3000, function() {
+							$(this).remove();
+						});
+					}
+				});
+				i++;
+			});
+			code = "$('#timeline').timeline('prepend', {element:'<div class=\"block\"><div class=\"inner\"><h2>Title</h2>Content</div></div>', callback: function(elm) {"+
+					"$('<p class=\"callback\" style=\"color:red;\">Hello I am a callback function for prepend !</p>').appendTo($(elm).children('.inner')).hide().fadeIn(3000, function() {"+
+						"$(this).remove();"+
+					"});"+
+				"}"+
+			"});";
+			preview();
+		});
+		$('[data-action="append"]').click(function() {
+			var nbr = Math.round(Math.random()*5);
+			$.ajax({
+				url:'http://sheenlipsum.com/gettext/'+nbr,
+				type: 'GET',
+				dataType: 'JSON'
+			}).done(function(lorem) {
+				if(lorem.length) {
+					for(l in lorem) lorem[l] = '<p>'+lorem[l]+'</p>';
+					lorem = lorem.join('');
+				}
+				$('#timeline').timeline('append', '<div class="block"><div class="inner"><h2>'+(parseInt(i)+1)+'</h2>'+lorem+'</div></div>');
+				i++;
+				
+			}).fail(function() {
+				var lorem = 'Can\'t connect to lorem ipsum api, but we don\'t care, right ?';
+				$('#timeline').timeline('append', '<div class="block"><div class="inner"><h2>'+(parseInt(i)+1)+'</h2>'+lorem+'</div></div>');
+				i++;
+			})
+			code = "$('#timeline').timeline('append', '<div class=\"block\"><div class=\"inner\"><h2>Title</h2>Content</div></div>');";
+			preview();
+		});
+		
+		$('[data-action="destroy"]').click(function() {
+			$('#timeline').timeline('destroy');
+			code = "$('#timeline').timeline('destroy');";
+			preview();
+		});
+		
+		$('.toggle-slide').on('click', function() {
+			$('header section').slideToggle(); 
+			$(this).toggleClass('icon-chevron-up').toggleClass('icon-chevron-down');
+			if($(this).hasClass('icon-chevron-up')) $('.content').animate({marginTop: '+=320'});
+			else $('.content').animate({marginTop: '-=320'});
+		}).on('mouseenter mouseleave', function() {
+			$(this).toggleClass('icon-white');
+		});
+		
+		$('.shortcut').on('mouseenter mouseleave', function() {
+			$(this).toggleClass('icon-white');
+		});
+		
+		function preview() {
+			code = js_beautify(code);
+			$('.render pre code').text(code);
+			$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+		}
+	</script>
+</body>
+</html>

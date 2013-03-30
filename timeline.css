@@ -1,0 +1,54 @@
+/* Timeline styles */
+.timeline-container {
+	position: relative;
+	overflow: hidden;
+}
+.timeline-container .timeline-central-line {
+	position: absolute;
+	width: 4px;
+	height: 100%;
+	right: 50%;
+	margin-right: -2px;
+	background: #ddd;
+	z-index: 1;
+}
+.timeline-container .timeline-item {
+	width: 50%;
+	position:relative;
+	z-index:2;
+}
+
+.timeline-container.timeline-wide-format .timeline-item {
+	width: 100%;
+}
+
+.timeline-container .timeline-wide-item {
+	width: 100%;
+}
+
+.timeline-container .timeline-item .block {
+	width: 100%;
+}
+
+.timeline-position-left {
+	float: left;
+	clear: left;
+}
+.timeline-position-right {
+	float: right;
+	clear: right;
+}
+
+/* Timeline wide styles */
+.timeline-container.timeline-wide-format .timeline-item {
+	width: 100%;
+}
+
+.timeline-container.timeline-wide-format .timeline-position-right {
+	float: left;
+	clear: left;
+}
+
+.timeline-container.timeline-wide-format .timeline-item-arrow {
+	display: none;
+}
