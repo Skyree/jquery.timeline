@@ -16,7 +16,7 @@ Enable the plugin on your selector by using the method :
 
 
 ### item
-`item` must be a selector for your timeline items. By default it is set to `.item`.
+`item` must be a selector for your timeline items. By default it is set to `.block`.
 
 ### corner
 `corner` must be a selector to define what elements will be in the top right corner. If set to `false` corner option won't be enabled. By default it is set to `false`.
@@ -37,17 +37,19 @@ If this option is enabled, a listener of these buttons will call a function to r
 ### column
 `column` defines a number of column (1 or 2). It must be a integer or a function returning an integer. By default it is set to `2`.
 By using it as a function, you can retrieve your timeline container :
+`
 	$('#selector').timeline({
 		column: function(container) {
 			if($(container).width() > 768) return 1;
 			else return 2;
 		}
 	});
+`
 This example return one column in your container is narrower than 768 pixels, 2 columns on the contrary.
 
 ### first
 `first` must be set to `left` or `right`. This property works with the `corner` property. Setting it to right makes the corner item first in the DOM, setting it to the left makes it second.
-That allows you to choose the order in a single column display.
+That allows you to choose the order in a single column display. By default it is set to `right`.
 
 ### animation
 `animation` allows you to use an effect when you append, prepend or remove an element from the timeline. It can be set to :
@@ -63,3 +65,23 @@ By default it is set to `false` so you don't have animation.
 
 ### onRemoveItem
 `onRemoveItem` is a callback called when you click on a delete button built with the `deletebtn` property. By default it is set to `false`.
+
+## Method
+
+### reload
+Reload the timeline to reposition elements
+
+### prepend
+Prepend an element and allows a callback
+
+### append
+Append an element and allows a callback
+
+### removeItem
+Remove an element and allows a callback
+
+### remove
+Remove the timeline but you can reload it after.
+
+### destroy
+Destroy the timeline and all properties set.
