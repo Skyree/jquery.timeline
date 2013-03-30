@@ -77,6 +77,7 @@ Prepend an element and allows a callback
 Options :
 * element : An element that suits the item property.
 * callback : An optional callback function.
+
 If you don't need a callback you don't need to use a map.
 * `$('#selector').prepend('<div class="block" />')`
 * `$('#selector').prepend({element: '<div class="block" />', callback: function(newElm) { // do stuff }})`
@@ -90,6 +91,7 @@ Remove an element and allows a callback
 Option :
 * element : A timeline element or a child of this element.
 * callback : An optional callback function
+
 If you don't need a callback youdon't need to use a map.
 * `$('#selector').removeItem(myElm)`
 * `$('#selector').removeItem(element: myElm, callback: function(deletedElmCopy) { // do stuff }})`
