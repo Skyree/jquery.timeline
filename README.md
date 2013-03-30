@@ -16,4 +16,50 @@ Enable the plugin on your selector by using the method :
 
 
 ### item
-`item` must be a selector for your timeline items. By default it is set to `.item`
+`item` must be a selector for your timeline items. By default it is set to `.item`.
+
+### corner
+`corner` must be a selector to define what elements will be in the top right corner. If set to `false` corner option won't be enabled. By default it is set to `false`.
+
+### wide
+`wide` must be a selector to define what elements must always fill the two columns width. If set to `false` wide option won't be enabled. By default it is set to `false`.
+
+### line
+`line` is a boolean allowing you to add a central line in the timeline that you can design with your own css. By default it is set to `false`.
+
+### arrows
+`arrows` is a boolean allowing you to add arrows on the sides of your timeline items that you can design with your own css. By default it is set to `false`.
+
+### deletebtn
+`deletebtn` allows you to add delete buttons on your timeline items. You can set a specific class like `.remove-me` or just set it to `true`. By default it is set to `false`.
+If this option is enabled, a listener of these buttons will call a function to remove the related timeline items. You can set a callback automatically with the property `onRemoveItem`.
+
+### column
+`column` defines a number of column (1 or 2). It must be a integer or a function returning an integer. By default it is set to `2`.
+By using it as a function, you can retrieve your timeline container :
+	$('#selector').timeline({
+		column: function(container) {
+			if($(container).width() > 768) return 1;
+			else return 2;
+		}
+	});
+This example return one column in your container is narrower than 768 pixels, 2 columns on the contrary.
+
+### first
+`first` must be set to `left` or `right`. This property works with the `corner` property. Setting it to right makes the corner item first in the DOM, setting it to the left makes it second.
+That allows you to choose the order in a single column display.
+
+### animation
+`animation` allows you to use an effect when you append, prepend or remove an element from the timeline. It can be set to :
+* `fade`
+* `slide`
+By default it is set to `false` so you don't have animation.
+
+### duration
+`duration` must be an integer. Use it to choose the duration of the animation in milliseconds. By default it is set to `2000`.
+
+### onComplete
+`onComplete` is a callback called when the timeline is built. By default it is set to `false`.
+
+### onRemoveItem
+`onRemoveItem` is a callback called when you click on a delete button built with the `deletebtn` property. By default it is set to `false`.
