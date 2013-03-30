@@ -91,7 +91,7 @@ See prepend.
 ### removeItem
 Remove an element and allows a callback.
 
-Option :
+Options :
 * element : A timeline element or a child of this element.
 * callback : An optional callback function.
 
