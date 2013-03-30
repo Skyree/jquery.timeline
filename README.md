@@ -37,14 +37,14 @@ If this option is enabled, a listener of these buttons will call a function to r
 ### column
 `column` defines a number of column (1 or 2). It must be a integer or a function returning an integer. By default it is set to `2`.
 By using it as a function, you can retrieve your timeline container :
-`
+
 	$('#selector').timeline({
 		column: function(container) {
 			if($(container).width() > 768) return 1;
 			else return 2;
 		}
 	});
-`
+
 This example return one column in your container is narrower than 768 pixels, 2 columns on the contrary.
 
 ### first
