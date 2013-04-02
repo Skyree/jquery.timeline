@@ -62,10 +62,10 @@ By default it is set to `false` so you don't have animation.
 `duration` must be an integer. Use it to choose the duration of the animation in milliseconds. By default it is set to `2000`.
 
 ### onComplete
-`onComplete` is a callback called when the timeline is built. By default it is set to `false`.
+`onComplete` is a callback called when the timeline is built and handling the timeline-container. By default it is set to `false`.
 
 ### onRemoveItem
-`onRemoveItem` is a callback called when you click on a delete button built with the `deletebtn` property. By default it is set to `false`.
+`onRemoveItem` is a callback only called when you click on a delete button built with the `deletebtn` property. By default it is set to `false`.
 
 ## Methods
 
@@ -78,7 +78,7 @@ Prepend an element and allows a callback.
 
 Options :
 * element : An element that suits the item property.
-* callback : An optional callback function.
+* callback : An optional callback function handling the new timeline item.
 
 If you don't need a callback you don't need to use a map.
 * `$('#selector').timeline('prepend', '<div class="block" />')`
@@ -94,7 +94,7 @@ Remove an element and allows a callback.
 
 Options :
 * element : A timeline element or a child of this element.
-* callback : An optional callback function.
+* callback : An optional callback function handling a copy of the deleted timeline item.
 
 If you don't need a callback youdon't need to use a map.
 * `$('#selector').timeline('removeItem', myElm)`
@@ -111,3 +111,16 @@ Destroy the timeline and all properties set.
 You can use an optional callback.
 * `$('#selector').timeline('destroy')`
 * `$('#selector').timeline('destroy', function() { // do stuff })`
+
+## Styling
+You can add your own css to all the elements thanks to these class :
+* `timeline-container` : Your timeline container.
+* `timeline-wide-format` : Added if your timeline is displayed in one-column.
+* `timeline-item` : A timeline item (containing your original element).
+* `timeline-corner-item` : The corner item if enabled.
+* `timeline-wide-item` : A wide item if wide property is enabled.
+* `timeline-position-left` : Items on the left side.
+* `timeline-position-right` : Items on the right side.
+* `timeline-central-line` : Central line if line property is enabled.
+* `timeline-item-arrow` : Item arrow if arrow property is enabled.
+* `timeline-item-close` : Item delete button if deletebtn property is enabled.
