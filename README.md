@@ -55,6 +55,7 @@ That allows you to choose the order in a single column display. By default it is
 `animation` allows you to use an effect when you append, prepend or remove an element from the timeline. It can be set to :
 * `fade`
 * `slide`
+
 By default it is set to `false` so you don't have animation.
 
 ### duration
@@ -80,8 +81,8 @@ Options :
 * callback : An optional callback function.
 
 If you don't need a callback you don't need to use a map.
-* `$('#selector').prepend('<div class="block" />')`
-* `$('#selector').prepend({element: '<div class="block" />', callback: function(newElm) { // do stuff }})`
+* `$('#selector').timeline('prepend', '<div class="block" />')`
+* `$('#selector').timeline('prepend', {element: '<div class="block" />', callback: function(newElm) { // do stuff }})`
 
 ### append
 Append an element and allows a callback.
@@ -96,11 +97,12 @@ Options :
 * callback : An optional callback function.
 
 If you don't need a callback youdon't need to use a map.
-* `$('#selector').removeItem(myElm)`
-* `$('#selector').removeItem(element: myElm, callback: function(deletedElmCopy) { // do stuff }})`
+* `$('#selector').timeline('removeItem', myElm)`
+* `$('#selector').timeline('removeItem', {element: myElm, callback: function(deletedElmCopy) { // do stuff }})`
 
 ### remove
 Remove the timeline but you can reload it after.
+
 `$('#selector').timeline('remove')`
 
 ### destroy
