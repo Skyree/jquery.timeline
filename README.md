@@ -113,7 +113,7 @@ You can use an optional callback.
 * `$('#selector').timeline('destroy', function() { // do stuff })`
 
 ## Styling
-You can add your own css to all the elements thanks to these class :
+You can add your own css to all the elements thanks to these classes :
 * `timeline-container` : Your timeline container.
 * `timeline-wide-format` : Added if your timeline is displayed in one-column.
 * `timeline-item` : A timeline item (containing your original element).

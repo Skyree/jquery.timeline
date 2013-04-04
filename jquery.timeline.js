@@ -133,7 +133,7 @@
 					var index = $element.find(plugin.settings.item).index(this);
 					$(this).attr('data-timeline-initial-position', index);
 				});
-				$element.find(plugin.settings.corner).unwrap().remove();
+				$element.find(plugin.settings.corner).unwrap().detach();
 				if(plugin.settings.first == 'left') {
 					$($element.children('.timeline-item').get(0)).after($corner);
 				}
@@ -298,7 +298,7 @@
 			// Reposition corner items to their origin
 			if(plugin.settings.corner != false) {
 				var $corners = $element.find(plugin.settings.corner);
-				$element.find('.timeline-corner-item '+plugin.settings.corner).remove();
+				$element.find('.timeline-corner-item '+plugin.settings.corner).detach();
 				$element.find('.timeline-corner-item').remove();
 				$element.find('.timeline-item '+plugin.settings.item).unwrap();
 				var last = $element.find(plugin.settings.item+':last').index();
