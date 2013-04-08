@@ -183,7 +183,7 @@
 			else $element.removeClass('timeline-wide-format');
 			$element.find('.timeline-item').each(function() {
 				if($(this).hasClass('timeline-wide-item') || (column == 1)) {
-					$(this).removeClass('timeline-position-left timeline-position-right').addClass('timeline-position-left');
+					$(this).removeClass('timeline-position-left timeline-position-right');
 					left += $(this).height();
 					right = left;
 				}
